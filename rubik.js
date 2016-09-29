@@ -240,6 +240,19 @@ function Rubik(element, dimensions, background) {
     }
   }
 
+  function moveFace(keyChar) {
+	pushMove(cube, cube.position.clone(), randomAxis(), randomDirection());
+  };
+  
+  /*** Manage Key Events ***/
+  element.on('keypress', function(keyE) {
+	var keyChar = String.fromCharCode(keyE.keyCode || keyE.charCode).toLowerCase();
+	switch(keyChar) {
+		default:
+			moveFace(keyChar);
+	}
+  }); 
+  
   /*** Manage transition states ***/
 
   //TODO: encapsulate each transition into a "Move" object, and keep a stack of moves
